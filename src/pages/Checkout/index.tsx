@@ -1,9 +1,7 @@
-import { TitleXL } from '../../components/style/titles.style'
-
 export function Checkout() {
   return (
     <>
-      <TitleXL>Checkout</TitleXL>
+      <h1>Checkout</h1>
     </>
   )
 }

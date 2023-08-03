@@ -4,7 +4,9 @@ export const Main = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 10rem;
+  margin: auto;
+  max-width: 1280px;
+  padding: 1.5rem 5rem;
 
   & img {
     height: 2.5rem;
@@ -25,6 +27,11 @@ export const Location = styled.div`
   color: ${(props) => props.theme.purple};
   background-color: ${(props) => props.theme.purpleLight};
   border-radius: 6px;
+  & p {
+    font-family: ${(props) => props.theme.roboto};
+    font-weight: ${(props) => props.theme.fontRegular};
+    font-size: ${(props) => props.theme.textS};
+  }
 `
 interface IcartProps {
   buttonContent?: string
@@ -45,9 +52,9 @@ export const CartButton = styled.button<IcartProps>`
     display: ${(props) => (props.buttonContent ? 'flex' : 'none')};
     justify-content: center;
     align-items: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-family: ${(props) => props.theme.roboto};
+    font-size: ${(props) => props.theme.textXS};
+    font-weight: ${(props) => props.theme.fontSemiBold};
     color: ${(props) => props.theme.white};
     width: 1rem;
     height: 1rem;

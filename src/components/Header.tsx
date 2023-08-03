@@ -2,7 +2,6 @@ import logo from '../assets/logo.svg'
 import { Main, Location, CartButton } from './style/Header.style'
 import { MapPin, ShoppingCart } from '@phosphor-icons/react'
 import { defaultTheme } from '../styles/themes/default'
-import { TextS } from './style/titles.style'
 
 export function Header() {
   return (
@@ -11,9 +10,9 @@ export function Header() {
       <div>
         <Location>
           <MapPin size={22} weight="fill" color={defaultTheme.purple} />
-          <TextS>Brasília, DF</TextS>
+          <p>Brasília, DF</p>
         </Location>
-        <CartButton buttonContent={''}>
+        <CartButton buttonContent={'5'}>
           <ShoppingCart
             size={22}
             color={defaultTheme.yellowDark}
