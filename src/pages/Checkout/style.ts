@@ -132,7 +132,7 @@ export const ButtonPay = styled.div`
   align-items: center;
   border-radius: 6px;
   background-color: ${(props) => props.theme.baseButton};
-  border: transparent;
+  border: 2px solid transparent;
   & p {
     font-family: ${(props) => props.theme.roboto};
     font-size: ${(props) => props.theme.textS};
@@ -140,6 +140,10 @@ export const ButtonPay = styled.div`
     line-height: ${(props) => props.theme.lineS};
     color: ${(props) => props.theme.baseText};
     text-transform: uppercase;
+  }
+
+  &:active {
+    border: 2px solid ${(props) => props.theme.purple};
   }
 `
 

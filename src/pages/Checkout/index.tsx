@@ -116,7 +116,9 @@ export function Checkout() {
               <h1>R$ 33,20</h1>
             </div>
           </CheckResume>
-          <button>Confirmar pedido</button>
+          <button>
+            <a href="./success">Confirmar pedido</a>
+          </button>
         </div>
       </CheckCart>
     </CheckContainer>
