@@ -3,7 +3,7 @@ import { ProdutsList } from './Produts'
 import { setPreice } from './GlobalFunctions'
 
 export function WhatsappSend(cart: Icart) {
-  const phone = '5561999955583'
+  const phone = '55619999999999'
 
   const itens = cart.itens.map((item) =>
     ProdutsList.find((produt) => produt.id === item.id),
@@ -15,15 +15,17 @@ export function WhatsappSend(cart: Icart) {
 *Complemento:* ${cart.formUser?.complemento} *Bairro:* ${cart.formUser?.bairro} 
 *Cidade:* ${cart.formUser?.cidade} *UF:* ${cart.formUser?.uf} 
   
-*Itens:* \n ${itens.map(
-    (item) =>
-      cart.itens.find((it) => it.id === item?.id)?.amount +
-      ' - ' +
-      item?.titleCoffee +
-      ' = ' +
-      setPreice(item!.priceCoffee) +
-      ' \n ',
-  )}  
+*Itens:* \n ${itens
+    .map(
+      (item) =>
+        cart.itens.find((it) => it.id === item?.id)?.amount +
+        ' - ' +
+        item?.titleCoffee +
+        ' = ' +
+        setPreice(item!.priceCoffee) +
+        ' \n ',
+    )
+    .join('')}  
 *Frete:*  ${setPreice(cart.frete)}
 *Forma de Pagamento:*  ${cart.pagamento?.toLocaleUpperCase()}
 *Preço total do pedido:*  *${setPreice(cart.totalprice)}*
