@@ -23,7 +23,7 @@ export function WhatsappSend(cart: Icart) {
       ' = ' +
       setPreice(item!.priceCoffee) +
       ' \n ',
-  )}  \n
+  )}  
 *Frete:*  ${setPreice(cart.frete)}
 *Forma de Pagamento:*  ${cart.pagamento?.toLocaleUpperCase()}
 *Preço total do pedido:*  *${setPreice(cart.totalprice)}*
