@@ -34,7 +34,7 @@ export const Location = styled.div`
   }
 `
 interface IcartProps {
-  buttonContent?: string
+  $buttoncontent?: number
 }
 
 export const CartButton = styled.button<IcartProps>`
@@ -48,8 +48,8 @@ export const CartButton = styled.button<IcartProps>`
   position: relative;
 
   &::before {
-    content: '${(props) => props.buttonContent}';
-    display: ${(props) => (props.buttonContent ? 'flex' : 'none')};
+    content: '${(props) => props.$buttoncontent}';
+    display: ${(props) => (props.$buttoncontent ? 'flex' : 'none')};
     justify-content: center;
     align-items: center;
     font-family: ${(props) => props.theme.roboto};

@@ -19,14 +19,16 @@ export const Card = styled.div`
     transform: translateY(-40%);
   }
 
+  & .tags {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
   & .tag {
-    margin: 1rem auto 1.25rem;
+    margin: 1rem 0 1.25rem;
     padding: 0.25rem 0.5rem;
     background-color: ${(props) => props.theme.yellowLight};
     border-radius: 100px;
-  }
-
-  & .tag p {
     text-transform: uppercase;
     font-family: ${(props) => props.theme.roboto};
     font-size: ${(props) => props.theme.tag};

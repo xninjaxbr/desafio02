@@ -9,9 +9,13 @@ import {
 import imgcoffe from '../../assets/coffee.png'
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react'
 import { CoffeeCard } from '../../components/CoffeeCard'
-import expresso from '../../assets/Expresso.png'
-
+import { ProdutsList } from '../../components/Produts'
+// import { useContext } from 'react'
+// import { CartContext } from '../../components/context/CartContext'
 export function Home() {
+  // const cartContext = useContext(CartContext)
+
+  // console.log(cartContext.cart.itens.length)
   return (
     <Container>
       <Header>
@@ -23,25 +27,25 @@ export function Home() {
           </h2>
           <Tags>
             <div>
-              <SpanContainer bgColor="yellow">
+              <SpanContainer $bgcolor="yellow">
                 <ShoppingCart size={20} color="#fff" weight="fill" />
               </SpanContainer>
               <p>Compra simples e segura</p>
             </div>
             <div>
-              <SpanContainer bgColor="yellowDark">
+              <SpanContainer $bgcolor="yellowDark">
                 <Package size={20} color="#fff" weight="fill" />
               </SpanContainer>
               <p>Embalagem mantém o café intacto</p>
             </div>
             <div>
-              <SpanContainer bgColor="baseText">
+              <SpanContainer $bgcolor="baseText">
                 <Timer size={20} color="#fff" weight="fill" />
               </SpanContainer>
               <p>Entrega rápida e rastreada</p>
             </div>
             <div>
-              <SpanContainer bgColor="purple">
+              <SpanContainer $bgcolor="purple">
                 <Coffee size={20} color="#fff" weight="fill" />
               </SpanContainer>
               <p>O café chega fresquinho até você</p>
@@ -54,62 +58,17 @@ export function Home() {
         <h1>Nossos cafés</h1>
       </TitleC>
       <CoffeeContainer>
-        <CoffeeCard
-          imgCoffee={expresso}
-          tagCoffee="tradicional"
-          titleCoffee="Café Expresso"
-          priceCoffee="29390"
-          discriptionCoffee="O tradicional café feito com água quente e grãos moídos"
-        />
-        <CoffeeCard
-          imgCoffee={expresso}
-          tagCoffee="tradicional"
-          titleCoffee="Café Expresso"
-          priceCoffee="990"
-          discriptionCoffee="O tradicional café feito com água quente e grãos moídos"
-        />
-        <CoffeeCard
-          imgCoffee={expresso}
-          tagCoffee="tradicional"
-          titleCoffee="Café Expresso"
-          priceCoffee="990"
-          discriptionCoffee="O tradicional café feito com água quente e grãos moídos"
-        />
-        <CoffeeCard
-          imgCoffee={expresso}
-          tagCoffee="tradicional"
-          titleCoffee="Café Expresso"
-          priceCoffee="990"
-          discriptionCoffee="O tradicional café feito com água quente e grãos moídos"
-        />{' '}
-        <CoffeeCard
-          imgCoffee={expresso}
-          tagCoffee="tradicional"
-          titleCoffee="Café Expresso"
-          priceCoffee="990"
-          discriptionCoffee="O tradicional café feito com água quente e grãos moídos"
-        />{' '}
-        <CoffeeCard
-          imgCoffee={expresso}
-          tagCoffee="tradicional"
-          titleCoffee="Café Expresso"
-          priceCoffee="990"
-          discriptionCoffee="O tradicional café feito com água quente e grãos moídos"
-        />{' '}
-        <CoffeeCard
-          imgCoffee={expresso}
-          tagCoffee="tradicional"
-          titleCoffee="Café Expresso"
-          priceCoffee="990"
-          discriptionCoffee="O tradicional café feito com água quente e grãos moídos"
-        />{' '}
-        <CoffeeCard
-          imgCoffee={expresso}
-          tagCoffee="tradicional"
-          titleCoffee="Café Expresso"
-          priceCoffee="990"
-          discriptionCoffee="O tradicional café feito com água quente e grãos moídos"
-        />
+        {ProdutsList.map((produt) => (
+          <CoffeeCard
+            key={produt.id}
+            id={produt.id}
+            imgCoffee={produt.imgCoffee}
+            tagCoffee={produt.tagCoffee}
+            titleCoffee={produt.titleCoffee}
+            discriptionCoffee={produt.discriptionCoffee}
+            priceCoffee={produt.priceCoffee}
+          />
+        ))}
       </CoffeeContainer>
     </Container>
   )

@@ -71,7 +71,7 @@ export const Tags = styled.div`
 `
 
 interface spanProps {
-  bgColor: 'yellow' | 'yellowDark' | 'baseText' | 'purple'
+  $bgcolor: 'yellow' | 'yellowDark' | 'baseText' | 'purple'
 }
 
 export const SpanContainer = styled.span<spanProps>`
@@ -82,7 +82,7 @@ export const SpanContainer = styled.span<spanProps>`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: ${(props) => props.theme[props.bgColor]};
+  background-color: ${(props) => props.theme[props.$bgcolor]};
   text-align: center;
   padding: 0.5rem;
 `
@@ -106,5 +106,5 @@ export const CoffeeContainer = styled.div`
   display: flex;
   gap: 4rem 1rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 `

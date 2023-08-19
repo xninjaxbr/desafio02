@@ -4,16 +4,17 @@ import styled from 'styled-components'
 
 export const SuccessContainer = styled.div`
   display: flex;
-  flex-direction: column;
+
   max-width: 1280px;
   padding: 0 5rem;
   gap: 2rem;
-  align-items: flex-start;
+  justify-content: space-between;
   margin: auto;
   margin-bottom: 5rem;
+  align-items: center;
 
   & img {
-    width: 50%;
+    width: 100%;
   }
 
   & > div {
@@ -22,12 +23,13 @@ export const SuccessContainer = styled.div`
     justify-content: space-between;
   }
 
-  & > div:first-child {
+  & > div {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 915px) {
+    flex-direction: column;
     & > div:first-child {
       align-items: center;
     }
@@ -47,6 +49,8 @@ export const SuccessContainer = styled.div`
 
 export const Title = styled.div`
   display: flex;
+  flex-direction: column;
+  padding: 0 10px;
   & h1 {
     font-family: ${(props) => props.theme.baloo};
     font-size: ${(props) => props.theme.titleL};
@@ -65,7 +69,11 @@ export const Title = styled.div`
 `
 export const Orderinfo = styled.div`
   background:
-    linear-gradient(white, white) padding-box,
+    linear-gradient(
+        ${(props) => props.theme.background},
+        ${(props) => props.theme.background}
+      )
+      padding-box,
     linear-gradient(
         to right,
         ${(props) => props.theme.yellow},
@@ -85,18 +93,17 @@ export const Orderinfo = styled.div`
 
 // --------------------Status---------------------
 interface IstatusOrder {
-  bgColor: 'purple' | 'yellow' | 'yellowDark'
+  $bgcolor: 'purple' | 'yellow' | 'yellowDark'
 }
 
 export const StatusOrder = styled.div<IstatusOrder>`
   display: flex;
   gap: 0.75rem;
-  /* width: 400px; */
   & > span {
     display: flex;
     height: fit-content;
     border-radius: 1000px;
-    background-color: ${(props) => props.theme[props.bgColor]};
+    background-color: ${(props) => props.theme[props.$bgcolor]};
     padding: 0.5rem;
   }
 
@@ -113,5 +120,43 @@ export const StatusOrder = styled.div<IstatusOrder>`
     & > span {
       font-weight: ${(props) => props.theme.fontSemiBold};
     }
+  }
+`
+
+export const Send = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+export const ZapButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  border: transparent;
+  border-radius: 6px;
+  background: rgb(23, 98, 8);
+  background: linear-gradient(
+    180deg,
+    rgba(23, 98, 8, 1) 0%,
+    rgba(54, 175, 45, 1) 49%,
+    rgba(57, 210, 46, 1) 100%
+  );
+  color: ${(props) => props.theme.white};
+  text-transform: uppercase;
+  font-family: ${(props) => props.theme.roboto};
+  font-size: ${(props) => props.theme.buttonG};
+  font-weight: ${(props) => props.theme.fontSemiBold};
+  line-height: ${(props) => props.theme.lineM};
+
+  &:hover {
+    background: rgb(23, 98, 8);
+    background: linear-gradient(
+      180deg,
+      rgba(23, 98, 8, 1) 47%,
+      rgba(54, 175, 45, 1) 93%,
+      rgba(57, 210, 46, 1) 100%
+    );
   }
 `

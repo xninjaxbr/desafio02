@@ -1,24 +1,51 @@
 import { Minus, Plus, Trash } from '@phosphor-icons/react'
 import { Card, Amount } from './style/CartCoffeeCard.style'
 import { defaultTheme } from '../styles/themes/default'
+import { useContext } from 'react'
+import { CartContext } from './context/CartContext'
+import { setPreice } from './GlobalFunctions'
 
 interface Icardprops {
+  id: number
   imgCoffee: string
   titleCoffee: string
-  priceCoffee: string
+  priceCoffee: number
 }
 
 export function CartCoffeeCard({
+  id,
   imgCoffee,
   priceCoffee,
   titleCoffee,
 }: Icardprops) {
-  function setPreice(price: string) {
-    let tmpPrice = price + ''
-    tmpPrice = tmpPrice.replace(/([0-9]{2})$/g, ',$1')
-    if (tmpPrice.length > 6)
-      tmpPrice = tmpPrice.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2')
-    return tmpPrice
+  const cartContext = useContext(CartContext)
+
+  function getAmount() {
+    const item = cartContext.cart.itens.filter((item) => item.id === id)[0]
+    return item
+  }
+  const item = getAmount()
+
+  function removeToCart() {
+    cartContext.removeCart(id)
+  }
+
+  function changeAmount(operator: boolean) {
+    const tmpAmount = operator ? item.amount + 1 : item.amount - 1
+    if (tmpAmount > 0) {
+      cartContext.changeAmount(id, tmpAmount, priceCoffee)
+    }
+  }
+
+  function changePlus() {
+    changeAmount(true)
+  }
+  function changeMinus() {
+    changeAmount(false)
+  }
+
+  function formatPrice() {
+    return setPreice(item.totalItemPrices)
   }
 
   return (
@@ -29,21 +56,21 @@ export function CartCoffeeCard({
           <p>{titleCoffee}</p>
           <div>
             <Amount>
-              <button>
+              <button onClick={changeMinus}>
                 <Minus size={14} />
               </button>
-              <span>1</span>
-              <button>
+              <span>{item.amount}</span>
+              <button onClick={changePlus}>
                 <Plus size={14} />
               </button>
             </Amount>
-            <button>
-              <Trash size={20} color={defaultTheme.purple} /> remove
+            <button onClick={removeToCart}>
+              <Trash size={20} color={defaultTheme.purple} /> remover
             </button>
           </div>
         </div>
       </div>
-      <p>{`R$ ${setPreice(priceCoffee.toString())}`}</p>
+      <p>{formatPrice().toString()}</p>
     </Card>
   )
 }

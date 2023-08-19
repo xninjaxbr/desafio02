@@ -124,15 +124,24 @@ export const ButtonContainer = styled.div`
     flex-direction: column;
   }
 `
+interface IactiveButtonprops {
+  'data-active'?: boolean
+}
 
-export const ButtonPay = styled.div`
+export const ButtonPay = styled.button<IactiveButtonprops>`
   display: flex;
   padding: 1rem;
   gap: 0.75rem;
   align-items: center;
   border-radius: 6px;
   background-color: ${(props) => props.theme.baseButton};
-  border: 2px solid transparent;
+  border: ${(props) =>
+    props['data-active']
+      ? '2px solid ' + props.theme.purple
+      : '2px solid transparent'};
+  box-shadow: ${(props) =>
+    props['data-active'] ? '1px 1px 5px ' + props.theme.purpleDark : 'inherit'};
+
   & p {
     font-family: ${(props) => props.theme.roboto};
     font-size: ${(props) => props.theme.textS};
@@ -140,10 +149,6 @@ export const ButtonPay = styled.div`
     line-height: ${(props) => props.theme.lineS};
     color: ${(props) => props.theme.baseText};
     text-transform: uppercase;
-  }
-
-  &:active {
-    border: 2px solid ${(props) => props.theme.purple};
   }
 `
 
